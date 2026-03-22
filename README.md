@@ -1,5 +1,7 @@
 # PDF to Markdown Toolkit 📄➡️📝
 
+[**GitHub Repository**](https://github.com/rinn7e/pdf-to-markdown)
+
 A collection of tools to convert PDF documents into clean, structured Markdown files. This toolkit works in five stages:
 1.  **PDF to Images**: Converts each page of a PDF into high-quality images.
 2.  **Images to Markdown (OCR)**: Extracts text from images using Google Cloud Vision OCR.
