@@ -6,8 +6,8 @@ A collection of tools to convert PDF documents into clean, structured Markdown f
 1.  **PDF to Images**: Converts each page of a PDF into high-quality images.
 2.  **Images to Markdown (OCR)**: Extracts text from images using Google Cloud Vision OCR.
 3.  **Markdown Cleaning (AI)**: Fixes OCR errors and prettifies the layout using AI (Gemini).
-4.  **Markdown Merging**: Combines multiple markdown pages into a single document.
-5.  **English Translation (AI)**: Translates the final document while preserving structure and legal terminology.
+4.  **English Translation (AI)**: Translates the cleaned markdown pages while preserving structure.
+5.  **Markdown Merging**: Combines multiple markdown pages into a single document.
 
 ---
 

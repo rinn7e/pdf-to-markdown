@@ -1,0 +1,6 @@
+    - **Section 2: General Prosecution Office attached to the Supreme Court (ផ្នែកទី២ មហាអយ្យការអមតុលាការកំពូល)** (Articles 68 to 70)
+    - **Section 3: General Secretariat of Administration of the Supreme Court (ផ្នែកទី៣ អគ្គលេខាធិការដ្ឋានរដ្ឋបាលតុលាការកំពូល)** (Articles 71 to 73)
+- **Chapter 5: Incompatibility (ជំពូកទី៥ វិសមិតភាព)** (Articles 74 to 78)
+- **Chapter 6: Budget of Adjudicating Courts and Prosecution Offices attached to Adjudicating Courts (ជំពូកទី៦ ថវិកាសាលាជម្រះក្តី និងអយ្យការអមសាលាជម្រះក្តី)** (Article 79)
+- **Chapter 7: Transitional Provisions (ជំពូកទី៧ អន្តរប្បញ្ញត្តិ)** (Articles 80 to 90)
+- **Chapter 8: Final Provisions (ជំពូកទី៨ អវសានប្បញ្ញត្តិ)** (Article 91)

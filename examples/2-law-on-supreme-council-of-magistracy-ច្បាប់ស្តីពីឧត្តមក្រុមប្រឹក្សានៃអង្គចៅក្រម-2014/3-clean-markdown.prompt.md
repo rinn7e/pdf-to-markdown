@@ -1,6 +1,7 @@
 follow
 
-3-md-to-clean-md/gemini.prompt.md
+3-clean-markdown/gemini.prompt.md
+
 
 execute on dir
 
