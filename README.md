@@ -163,4 +163,5 @@ To convert a full PDF to clean markdown, follow this recommended workflow:
 ---
 
 ## 📜 License
-Refer to the individual tool directories for licensing information.
+
+This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for the full text.
