@@ -2,7 +2,7 @@ name:                combine-markdown
 version:             0.1.0.0
 github:              "rinn7e/pdf-to-markdown"
 
-license:             BSD3
+license:             GPL-2
 author:              "Author name here"
 maintainer:          "example@example.com"
 copyright:           "2026 Author name here"

@@ -182,4 +182,4 @@ Check the [examples/](./examples) directory for real-world legal documents proce
 
 ## 📜 License
 
-This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for the full text.
+This project is licensed under the **GNU General Public License v2.0**. See the [LICENSE](./LICENSE) file for the full text.
