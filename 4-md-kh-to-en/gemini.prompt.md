@@ -11,9 +11,10 @@ Translate the provided Khmer Markdown into English while strictly adhering to th
     - Example: `Independence (អត្តាធីនភាព)`, `Personality Rights (សិទ្ធិបុគ្គល)`.
 6. **Translation Style**: Use formal, standard English suitable for legal or official documents.
 
-## Input Example
-- **Source File**: `/path/to/combined-khmer.md`
-- **Output File**: `/path/to/english-version.md`
+## Input/Output
+- **Input Directory**: `/path/to/3-clean-markdown/` (contains multiple `.md` files)
+- **Output Directory**: `/path/to/4-en-markdown/` (translated files as `<original-name>-en.md`)
 
 ## Prompt
-"Please translate the following Khmer Markdown content to English. Ensure that you fix any typos found in the Khmer original first and follow the rules regarding image preservation, structural integrity, and bracketed Khmer for technical terms."
+"Please translate all Khmer Markdown files in the provided input directory to English. For each file, ensure that you fix any typos found in the Khmer original first and follow the rules regarding image preservation, structural integrity, and bracketed Khmer for technical terms. Save the translated files into the output directory with the suffix `-en.md` added to the original filename."
+

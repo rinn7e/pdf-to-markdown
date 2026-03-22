@@ -73,23 +73,34 @@ stack run -- --input-dir <DIR> --output-dir <DIR> --credentials <FILE>
 
 ---
 
-### 3. `3-md-to-clean-md`
+### 3. `3-clean-markdown`
 Fixes OCR errors, corrects script-specific issues (e.g., Khmer combining characters), and prettifies the markdown layout using AI.
 
 #### Prerequisites
 - **AI Access** (e.g., Gemini API or an AI coding assistant).
 
 #### Usage
-Follow the instructions and use the prompt stored in [3-md-to-clean-md/gemini.prompt.md](./3-md-to-clean-md/gemini.prompt.md).
+Follow the instructions and use the prompt stored in [3-clean-markdown/gemini.prompt.md](./3-clean-markdown/gemini.prompt.md).
 
 ---
 
-### 4. `4-combine-md`
+### 4. `4-md-kh-to-en`
+Translates Khmer markdown files into English markdown using AI, preserving the original structure and providing bracketed Khmer source text for technical terms. This step processes all markdown files in a directory.
+
+#### Prerequisites
+- **AI Access** (e.g., Gemini API or an AI coding assistant).
+
+#### Usage
+Follow the instructions and use the prompt stored in [4-md-kh-to-en/gemini.prompt.md](./4-md-kh-to-en/gemini.prompt.md).
+
+---
+
+### 5. `5-combine-markdown`
 Combines multiple markdown files from a directory into a single document, ensuring they are sorted correctly (e.g., `page-001.md`, `page-002.md`).
 
 #### Installation
 ```bash
-cd 4-combine-md
+cd 5-combine-markdown
 stack build
 ```
 
@@ -99,17 +110,6 @@ stack run -- -i <INPUT_DIR> -o <OUTPUT_DIR> [-n <FILE_NAME>]
 ```
 
 The output will be saved as `<OUTPUT_DIR>/<FILE_NAME or INPUT_DIR_NAME>.md`.
-
----
-
-### 5. `5-md-kh-to-en`
-Translates Khmer markdown files into English markdown using AI, preserving the original structure and providing bracketed Khmer source text for technical terms.
-
-#### Prerequisites
-- **AI Access** (e.g., Gemini API or an AI coding assistant).
-
-#### Usage
-Follow the instructions and use the prompt stored in [5-md-kh-to-en/gemini.prompt.md](./5-md-kh-to-en/gemini.prompt.md).
 
 ---
 
@@ -124,8 +124,8 @@ To convert a full PDF (e.g., Khmer legal text) to clean, translated markdown, fo
     mkdir -p temp/my-pdf-name/1-output-images
     mkdir -p temp/my-pdf-name/2-output-markdown
     mkdir -p temp/my-pdf-name/3-clean-markdown
-    mkdir -p temp/my-pdf-name/4-combine-markdown
-    mkdir -p temp/my-pdf-name/5-en-version
+    mkdir -p temp/my-pdf-name/4-en-markdown
+    mkdir -p temp/my-pdf-name/5-combine-markdown
     ```
     Copy your PDF file into the created directory:
     ```bash
@@ -150,20 +150,28 @@ To convert a full PDF (e.g., Khmer legal text) to clean, translated markdown, fo
     ```
 
 4.  **Stage 3: Clean and Prettify (AI):**
-    Use an AI model with the instructions in `3-md-to-clean-md/gemini.prompt.md` to process the raw OCR files from `temp/my-pdf-name/2-output-markdown/` into `temp/my-pdf-name/3-clean-markdown/`.
+    Use an AI model with the instructions in `3-clean-markdown/gemini.prompt.md` to process the raw OCR files from `temp/my-pdf-name/2-output-markdown/` into `temp/my-pdf-name/3-clean-markdown/`.
 
-5.  **Stage 4: Merge into Final Document:**
+5.  **Stage 4: Translate to English (AI):**
+    Use an AI model with the prompt in `4-md-kh-to-en/gemini.prompt.md` to translate the cleaned files from `temp/my-pdf-name/3-clean-markdown/` into `temp/my-pdf-name/4-en-markdown/`.
+
+6.  **Stage 5: Merge into Final Documents:**
+    Merge both the original Khmer and the translated English files:
     ```bash
-    cd ../4-combine-md
+    cd ../5-combine-markdown
+    # Combine original Khmer
     stack run -- \
       -i ../temp/my-pdf-name/3-clean-markdown \
-      -o ../temp/my-pdf-name/4-combine-markdown \
+      -o ../temp/my-pdf-name/5-combine-markdown \
       -n my-pdf-name
-    ```
-    *This will create `temp/my-pdf-name/4-combine-markdown/my-pdf-name.md`.*
 
-6.  **Stage 5: Translate to English (AI):**
-    Use an AI model with the prompt in `5-md-kh-to-en/gemini.prompt.md` to translate the final document from `temp/my-pdf-name/4-combine-markdown/` into `temp/my-pdf-name/5-en-version/`.
+    # Combine translated English
+    stack run -- \
+      -i ../temp/my-pdf-name/4-en-markdown \
+      -o ../temp/my-pdf-name/5-combine-markdown \
+      -n my-pdf-name-en
+    ```
+    *This will create `temp/my-pdf-name/5-combine-markdown/my-pdf-name.md` and `temp/my-pdf-name/5-combine-markdown/my-pdf-name-en.md`.*
 
 ---
 

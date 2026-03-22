@@ -1,6 +1,7 @@
-name:                combine-md
+name:                combine-markdown
 version:             0.1.0.0
-github:              "githubuser/md-to-final-md"
+github:              "rinn7e/pdf-to-markdown"
+
 license:             BSD3
 author:              "Author name here"
 maintainer:          "example@example.com"
