@@ -1,11 +1,11 @@
 # PDF to Markdown Toolkit 📄➡️📝
 
-A collection of tools to convert PDF documents into clean, structured Markdown files. This toolkit works in three stages:
+A collection of tools to convert PDF documents into clean, structured Markdown files. This toolkit works in five stages:
 1.  **PDF to Images**: Converts each page of a PDF into high-quality images.
-2.  **Images to Markdown**: Extracts text from images using Google Cloud Vision OCR.
+2.  **Images to Markdown (OCR)**: Extracts text from images using Google Cloud Vision OCR.
 3.  **Markdown Cleaning (AI)**: Fixes OCR errors and prettifies the layout using AI (Gemini).
-4.  **Markdown Merging**: Combines multiple markdown pages into a single document stored in `4-combine-markdown/`.
-5.  **English Translation (AI)**: Translates Khmer markdown to English while preserving structure and providing bilingual references for technical terms.
+4.  **Markdown Merging**: Combines multiple markdown pages into a single document.
+5.  **English Translation (AI)**: Translates the final document while preserving structure and legal terminology.
 
 ---
 
@@ -98,6 +98,8 @@ stack run -- -i <INPUT_DIR> -o <OUTPUT_DIR> [-n <FILE_NAME>]
 
 The output will be saved as `<OUTPUT_DIR>/<FILE_NAME or INPUT_DIR_NAME>.md`.
 
+---
+
 ### 5. `5-md-kh-to-en`
 Translates Khmer markdown files into English markdown using AI, preserving the original structure and providing bracketed Khmer source text for technical terms.
 
@@ -111,23 +113,24 @@ Follow the instructions and use the prompt stored in [5-md-kh-to-en/gemini.promp
 
 ## 🚀 Workflow Example
 
-To convert a full PDF to clean markdown, follow this recommended workflow:
+To convert a full PDF (e.g., Khmer legal text) to clean, translated markdown, follow this recommended workflow:
 
 1.  **Prepare the project structure:**
-    Create a new directory in `temp/` named after your PDF and set up the necessary output folders:
+    Create a new directory in `temp/` named after your PDF and set up the necessary output folders to keep each stage separate:
     ```bash
     # Replace 'my-pdf-name' with your actual PDF name
     mkdir -p temp/my-pdf-name/1-output-images
     mkdir -p temp/my-pdf-name/2-output-markdown
     mkdir -p temp/my-pdf-name/3-clean-markdown
-    mkdir -p temp/my-pdf-name/combine-markdown
+    mkdir -p temp/my-pdf-name/4-combine-markdown
+    mkdir -p temp/my-pdf-name/5-en-version
     ```
     Copy your PDF file into the created directory:
     ```bash
     cp path/to/your/document.pdf temp/my-pdf-name/
     ```
 
-2.  **Generate Images from PDF:**
+2.  **Stage 1: Generate Images from PDF:**
     ```bash
     cd 1-pdf-to-images
     stack run -- ../temp/my-pdf-name/document.pdf \
@@ -135,7 +138,7 @@ To convert a full PDF to clean markdown, follow this recommended workflow:
       -p page -f png
     ```
 
-3.  **Perform OCR:**
+3.  **Stage 2: Perform OCR:**
     ```bash
     cd ../2-images-to-md
     stack run -- \
@@ -144,10 +147,10 @@ To convert a full PDF to clean markdown, follow this recommended workflow:
       -c /path/to/your/google-ocr-credentials.json
     ```
 
-4.  **Clean and Prettify (AI):**
-    Use an AI model with the prompt from `3-md-to-clean-md/gemini.prompt.md` to process the files from `temp/my-pdf-name/2-output-markdown/` into `temp/my-pdf-name/3-clean-markdown/`.
+4.  **Stage 3: Clean and Prettify (AI):**
+    Use an AI model with the instructions in `3-md-to-clean-md/gemini.prompt.md` to process the raw OCR files from `temp/my-pdf-name/2-output-markdown/` into `temp/my-pdf-name/3-clean-markdown/`.
 
-5.  **Merge into Final Document:**
+5.  **Stage 4: Merge into Final Document:**
     ```bash
     cd ../4-combine-md
     stack run -- \
@@ -157,8 +160,13 @@ To convert a full PDF to clean markdown, follow this recommended workflow:
     ```
     *This will create `temp/my-pdf-name/4-combine-markdown/my-pdf-name.md`.*
 
-6.  **Translate to English (AI):**
-    Use an AI model with the prompt from `5-md-kh-to-en/gemini.prompt.md` to translate the final document from `temp/my-pdf-name/4-combine-markdown/` into `temp/my-pdf-name/5-en-version/`.
+6.  **Stage 5: Translate to English (AI):**
+    Use an AI model with the prompt in `5-md-kh-to-en/gemini.prompt.md` to translate the final document from `temp/my-pdf-name/4-combine-markdown/` into `temp/my-pdf-name/5-en-version/`.
+
+---
+
+## 📂 Examples
+Check the [examples/](./examples) directory for real-world legal documents processed with this toolkit, including sample automation scripts.
 
 ---
 
