@@ -1,0 +1,11 @@
+.stack-work/
+*.log
+*.lock
+*.cabal
+dist-newstyle/
+temp_images/
+output_text/
+node_modules/
+.DS_Store
+
+temp
