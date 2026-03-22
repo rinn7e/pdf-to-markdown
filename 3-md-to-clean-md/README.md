@@ -18,4 +18,4 @@ We use **AI (Gemini)** to "fix and prettify" these files because it can:
 
 ## Setup
 
-The specific prompt used for this task is stored in [gemini-prompt.md](./gemini-prompt.md).
+The specific prompt used for this task is stored in [gemini.prompt.md](./gemini.prompt.md).

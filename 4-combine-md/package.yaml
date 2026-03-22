@@ -1,0 +1,28 @@
+name:                combine-md
+version:             0.1.0.0
+github:              "githubuser/md-to-final-md"
+license:             BSD3
+author:              "Author name here"
+maintainer:          "example@example.com"
+copyright:           "2026 Author name here"
+
+extra-source-files:
+- README.md
+- CHANGELOG.md
+
+dependencies:
+- base >= 4.7 && < 5
+- optparse-applicative
+- directory
+- filepath
+- text
+- bytestring
+
+executables:
+  combine-md-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
