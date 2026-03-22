@@ -19,6 +19,10 @@ prettify rules
 
 - using heading up to h4 not h5 or more
 - don't include page number
+- **Spacing**: Use blank lines (double newlines) to separate all major blocks of content. This includes:
+    - Between an introductory sentence and the start of a list. **Never** put the first list item on the same line as the introductory text.
+    - Between individual list items (e.g., between point ១-, ២-, etc.).
+    - Between distinct paragraphs within a single article/section.
 
 ---
 

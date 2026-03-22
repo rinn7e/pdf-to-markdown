@@ -78,16 +78,27 @@ The technical terms (វាក្យស័ព្ទបច្ចេកទេស) 
 
 **Article 4.-**
 The Supreme Council of Magistracy is under the Royal Chairmanship (ព្រះរាជាធិបតីភាព) of the King and consists of the following members:
+
 1- The Minister of Justice (រដ្ឋមន្ត្រីក្រសួងយុត្តិធម៌), as a member;
+
 2- The President of the Supreme Court (ប្រធានតុលាការកំពូល), as a member;
+
 3- The Prosecutor General of the Supreme Court (អគ្គព្រះរាជអាជ្ញាអមតុលាការកំពូល), as a member;
+
 4- One (01) member appointed (ជ្រើសតាំង) by the Senate (ព្រឹទ្ធសភា), by an absolute majority (មតិភាគច្រើនដាច់ខាត) of the total Senate members, from among dignitaries who are former judges, former prosecutors, or dignitaries with at least 15 years of work experience in the field of law or judiciary;
+
 5- One (01) member appointed by the National Assembly (រដ្ឋសភា), by an absolute majority of the total National Assembly members, from among dignitaries who are former judges, former prosecutors, or dignitaries with at least 15 years of work experience in the field of law or judiciary;
+
 6- One (01) member appointed by the Constitutional Council (ក្រុមប្រឹក្សាធម្មនុញ្ញ), by an absolute majority of its total members, from among dignitaries who are former judges, former prosecutors, or dignitaries with at least 15 years of work experience in the field of law or judiciary;
+
 7- One (01) member appointed by the Minister of Justice from among all fully-qualified (ពេញសិទ្ធិ) Prosecutors;
+
 8- One (01) member who is a Judge of the higher courts (សាលាជម្រះក្តីជាន់ខ្ពស់), elected by the Judges of the higher courts;
+
 9- One (01) member who is a Prosecutor of the General Prosecution at the higher courts (មហាអយ្យការអមសាលាជម្រះក្តីជាន់ខ្ពស់) or a Prosecutor serving at the Ministry of Justice, elected by the Prosecutors serving at the General Prosecution at the higher courts and at the Ministry of Justice;
+
 10- One (01) member who is a fully-qualified Judge of the Courts of First Instance (សាលាដំបូង), elected by fully-qualified Judges of the Courts of First Instance nationwide;
+
 11- One (01) member who is a fully-qualified Prosecutor of the Prosecution at the Courts of First Instance (អយ្យការអមសាលាដំបូង), elected by fully-qualified Prosecutors of the Prosecution at the Courts of First Instance nationwide.
 
 All the above members of the Supreme Council of Magistracy shall be appointed by Royal Decree. The Minister of Justice shall draft the Royal Decree for the King for this purpose.
@@ -160,9 +171,11 @@ The Supreme Council of Magistracy shall use its own seal (ត្រា) in the f
 
 **Article 18.-**
 The Supreme Council of Magistracy decides and submits proposals (លើកសេចក្តីស្នើ) to the King regarding the appointment (ការតែងតាំង), transfer (ការផ្លាស់ប្តូរ), detachment (ការផ្ដាច់ពីមុខងារ), secondment (ការដាក់ឲ្យនៅក្រៅក្របខណ្ឌ), placement on leave (ការដាក់ឲ្យនៅទំនេរ), and removal (ការលុបឈ្មោះ) of all Judges.
+
 The Council also submits proposals to the King regarding the appointment, transfer, detachment, placement on leave, secondment, and removal of all Prosecutors.
 
 All these shall be done upon the proposal (តាមសំណើ) of the Minister of Justice. Consultation (ពិគ្រោះយោបល់) with the Supreme Council of Magistracy on the above proposals is mandatory.
+
 The Council provides opinions (ផ្តល់យោបល់) on the promotion of class (ថ្នាក់) and rank (ឋានន្តរស័ក្តិ) for all Judges and Prosecutors according to the procedures and conditions set forth in the Law on the Statute (លក្ខន្តិកៈ) of Judges and Prosecutors.
 
 **Article 19.-**
@@ -200,8 +213,11 @@ Detailed procedures for the functioning of the Disciplinary Council shall be det
 
 **Article 26.-**
 In the event that a fault is found, the Disciplinary Council decides on disciplinary sanctions (ទណ្ឌកម្មវិន័យ) as set forth in the Law on the Statute (លក្ខន្តិកៈ) of Judges and Prosecutors. The decisions of the Council must state the factual and legal grounds (សំអាងហេតុ និងសំអាងច្បាប់).
+
 The decision-making process shall be the same as that of the Supreme Council of Magistracy as set forth in Article 11.
+
 The decisions of the Disciplinary Council shall be submitted to the Supreme Council of Magistracy for review and decision. The decision of the Supreme Council of Magistracy shall be final and not subject to appeal (បិទផ្លូវតវ៉ា).
+
 In cases where a disciplinary sanction of the 2nd category (ទណ្ឌកម្មវិន័យថ្នាក់ទី ២) is pronounced, the Council shall submit a proposal to the King for this purpose.
 
 # Chapter 5
@@ -212,6 +228,7 @@ For the duration of the organization of the new composition of the Supreme Counc
 
 **Article 28.-**
 The Minister of Justice shall organize the elections for members of the Supreme Council of Magistracy as set forth from points 8 to 11 of Article 4 within 03 (three) months after this Law enters into force.
+
 The formalities and procedures for the first election shall be determined by a Prokas of the Minister of Justice.
 
 **Article 29.-**
