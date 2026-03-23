@@ -50,6 +50,12 @@ optionsParser = PdfConverterOptions
      <> help "Prefix for the output image filenames"
       ))
   <*> imageFormatOption
+  <*> optional (option auto
+      ( long "limit"
+     <> short 'l'
+     <> metavar "N"
+     <> help "Limit the number of pages to process (starting from page 1)"
+      ))
 
 -- | Run the CLI
 main :: IO ()

@@ -1,0 +1,4 @@
+- deprecate all other steps
+- there should be only be 3 steps
+- update readme
+- update examples

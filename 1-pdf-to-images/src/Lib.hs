@@ -79,6 +79,7 @@ data PdfConverterOptions = PdfConverterOptions
   , optOutputDir :: FilePath
   , optOutputPrefix :: Maybe String
   , optFormat :: ImageFormat
+  , optLimit :: Maybe Int
   } deriving (Show, Eq)
 
 -- | Main entry point for the library logic
@@ -116,14 +117,24 @@ convertPdf opts = do
       
       -- pdftoppm args: -progress [options] PDF-file [PPM-root]
       -- We assume -progress prints to stderr.
-      args = ["-progress", formatFlag, optInputPdf opts, outputPathPrefix]
+      limitArgs = case optLimit opts of
+        Just n  -> ["-l", show n]
+        Nothing -> []
+      
+      args = ["-progress"] ++ limitArgs ++ [formatFlag, optInputPdf opts, outputPathPrefix]
       
       processConfig = P.setStderr P.createPipe $ P.proc "pdftoppm" args
+
+  -- How many pages are we actually processing
+  let effectiveTotalPages = case (optLimit opts, mPageCount) of
+        (Just n, Just c) -> Just (min n c)
+        (Just n, Nothing) -> Just n
+        (Nothing, mc)    -> mc
 
   -- Run the process and consume stderr for progress
   exitCode <- liftIO $ P.withProcessWait processConfig $ \p -> do
     let errH = P.getStderr p
-    runEff $ processOutput mPageCount errH
+    runEff $ processOutput effectiveTotalPages errH
     P.waitExitCode p
 
   case exitCode of

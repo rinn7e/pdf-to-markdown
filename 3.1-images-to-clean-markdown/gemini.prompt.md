@@ -1,21 +1,19 @@
-I want you to fix and prettify markdown files
+I want you to extract texts from an image into a markdown file.
+Also prettify that markdown files
 
 example
 
-/home/rinne/projects/my-package/pdf-to-markdown/temp/my-pdf-name/2-output-markdown/page-001.md
-
-compare it with original image
-
 /home/rinne/projects/my-package/pdf-to-markdown/temp/my-pdf-name/1-output-images/page-001.png
 
-create
+extract and prettify to
 
 /home/rinne/projects/my-package/pdf-to-markdown/temp/my-pdf-name/3-clean-markdown/page-001.md
 
 
 
-prettify rules
+extract/prettify rules
 
+- must include important texts
 - don't include any images
 - don't include decorative text/icon
 - don't include page number

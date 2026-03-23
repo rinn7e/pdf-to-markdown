@@ -34,6 +34,7 @@ stack run -- <INPUT_PDF> [OPTIONS]
 | `--output-dir DIR` | `-o` | Directory to save the output images | `.` |
 | `--prefix PREFIX` | `-p` | Prefix for the output image filenames | `page` |
 | `--format FORMAT` | `-f` | Output format: `png`, `jpeg`, `tiff` | `png` |
+| `--limit N` | `-l` | Limit the number of pages to process (starting from page 1) | Process all pages |
 | `--png` | | Output as PNG (flag) | |
 | `--jpeg` | | Output as JPEG (flag) | |
 | `--tiff` | | Output as TIFF (flag) | |
@@ -43,6 +44,11 @@ stack run -- <INPUT_PDF> [OPTIONS]
 Convert `document.pdf` to PNG images in the `images` directory:
 ```bash
 stack run -- document.pdf -o images
+```
+
+Convert only the first 10 pages:
+```bash
+stack run -- document.pdf -o images --limit 10
 ```
 
 Convert with a custom prefix `slide`:
@@ -57,3 +63,4 @@ stack run -- document.pdf -o images -f jpeg
 # OR
 stack run -- document.pdf -o images --jpeg
 ```
+
