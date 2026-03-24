@@ -3,11 +3,14 @@ Also prettify that markdown file and provide an English translation.
 
 **Example for Page 001:**
 
+**Source:**
+`/home/rinne/projects/my-package/pdf-to-markdown/temp/my-pdf-name/1-output-images/page-001.png`
+
 **Target 1 (Original):**
-`/home/rinne/projects/my-package/pdf-to-markdown/temp/my-pdf-name/3-clean-markdown/page-001.md`
+`/home/rinne/projects/my-package/pdf-to-markdown/temp/my-pdf-name/2-clean-markdown/page-001.md`
 
 **Target 2 (English):**
-`/home/rinne/projects/my-package/pdf-to-markdown/temp/my-pdf-name/4-english-markdown/page-001.md`
+`/home/rinne/projects/my-package/pdf-to-markdown/temp/my-pdf-name/2.1-en-markdown/page-001-en.md`
 
 **extract/prettify rules**
 
