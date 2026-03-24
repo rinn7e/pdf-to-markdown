@@ -37,13 +37,13 @@ stack run -- <INPUT_PDF> [OPTIONS]
 
 | Option | Shorthand | Description | Default |
 | :--- | :--- | :--- | :--- |
-| \`--output-dir DIR\` | \`-o\` | Directory to save output images | \`.\` |
-| \`--prefix PREFIX\` | \`-p\` | Prefix for output filenames | \`page\` |
-| \`--format FORMAT\` | \`-f\` | Output format: \`png\`, \`jpeg\`, \`tiff\` | \`png\` |
+| `--output-dir DIR` | `-o` | Directory to save output images | `.` |
+| `--prefix PREFIX` | `-p` | Prefix for output filenames | `page` |
+| `--format FORMAT` | `-f` | Output format: `png`, `jpeg`, `tiff` | `png` |
 
 ---
 
-### 2. \`2-img-to-clean-md-en\`
+### 2. `2-img-to-clean-md-en`
 Fixes OCR errors and translates Khmer markdown files into English markdown using AI, preserving the original structure.
 
 #### Prerequisites
@@ -54,8 +54,8 @@ Follow the instructions and use the prompt stored in [2-img-to-clean-md-en/gemin
 
 ---
 
-### 3. \`3-combine-markdown\`
-Combines multiple markdown files from a directory into a single document, ensuring they are sorted correctly (e.g., \`page-001.md\`, \`page-002.md\`).
+### 3. `3-combine-markdown`
+Combines multiple markdown files from a directory into a single document, ensuring they are sorted correctly (e.g., `page-001.md`, `page-002.md`).
 
 #### Installation
 ```bash
@@ -68,48 +68,55 @@ stack build
 stack run -- -i <INPUT_DIR> -o <OUTPUT_DIR> [-n <FILE_NAME>]
 ```
 
-The output will be saved as \`<OUTPUT_DIR>/<FILE_NAME or INPUT_DIR_NAME>.md\`.
+The output will be saved as `<OUTPUT_DIR>/<FILE_NAME or INPUT_DIR_NAME>.md`.
 
 ---
 
-## 🚀 Workflow Example
+### 🚀 Workflow Example
 
 To convert a full PDF (e.g., Khmer legal text) to clean, translated markdown, follow this recommended workflow:
 
-1.  **Prepare the project structure:**
-    Create a new directory in \`temp/\` named after your PDF and set up the necessary output folders to keep each stage separate:
-    \`\`\`bash
-    # Replace 'my-pdf-name' with your actual PDF name
-    mkdir -p temp/my-pdf-name/1-output-images
-    mkdir -p temp/my-pdf-name/2-clean-en-markdown
-    mkdir -p temp/my-pdf-name/3-combine-markdown
-    \`\`\`
-    Copy your PDF file into the created directory:
-    \`\`\`bash
-    cp path/to/your/document.pdf temp/my-pdf-name/
-    \`\`\`
+0. **Preparation:**
+Create a new directory in `temp/` named after your PDF and set up the necessary output folders to keep each stage separate:
+```bash
+# Replace 'my-pdf-name' with your actual PDF name
+mkdir -p temp/my-pdf-name/1-output-images
+mkdir -p temp/my-pdf-name/2-clean-markdown
+mkdir -p temp/my-pdf-name/2.1-en-markdown
+mkdir -p temp/my-pdf-name/3-combine-markdown
 
-2.  **Stage 1: Generate Images from PDF:**
-    \`\`\`bash
+# Copy your PDF file into the created directory
+cp path/to/your/document.pdf temp/my-pdf-name/
+```
+
+1.  **Stage 1: Generate Images from PDF:**
+    ```bash
     cd 1-pdf-to-images
     stack run -- ../temp/my-pdf-name/document.pdf \
       -o ../temp/my-pdf-name/1-output-images \
       -p page -f png
-    \`\`\`
+    ```
 
-3.  **Stage 2: Clean and Translate (AI):**
-    Use an AI model (like Gemini) with the instructions in \`2-img-to-clean-md-en/gemini.prompt.md\` to process the images from \`temp/my-pdf-name/1-output-images/\` into \`temp/my-pdf-name/2-clean-en-markdown/\`.
+2.  **Stage 2: Clean and Translate (AI):**
+    Use an AI model (like Gemini) with the instructions in `2-img-to-clean-md-en/gemini.prompt.md` to process the images from `temp/my-pdf-name/1-output-images/` into `temp/my-pdf-name/2-clean-markdown/` (for Khmer) and `temp/my-pdf-name/2.1-en-markdown/` (for English).
 
-4.  **Stage 3: Merge into Final Document:**
-    Merge the translated English files:
-    \`\`\`bash
+3.  **Stage 3: Merge into Final Documents:**
+    Merge both the original Khmer and the translated English files:
+    ```bash
     cd ../3-combine-markdown
+    # Combine original Khmer
     stack run -- \
-      -i ../temp/my-pdf-name/2-clean-en-markdown \
+      -i ../temp/my-pdf-name/2-clean-markdown \
+      -o ../temp/my-pdf-name/3-combine-markdown \
+      -n my-pdf-name
+
+    # Combine translated English
+    stack run -- \
+      -i ../temp/my-pdf-name/2.1-en-markdown \
       -o ../temp/my-pdf-name/3-combine-markdown \
       -n my-pdf-name-en
-    \`\`\`
-    *This will create \`temp/my-pdf-name/3-combine-markdown/my-pdf-name-en.md\`.*
+    ```
+    *This will create `temp/my-pdf-name/3-combine-markdown/my-pdf-name.md` and `temp/my-pdf-name/3-combine-markdown/my-pdf-name-en.md`.*
 
 ---
 
