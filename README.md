@@ -2,12 +2,10 @@
 
 [**GitHub Repository**](https://github.com/rinn7e/pdf-to-markdown)
 
-A collection of tools to convert PDF documents into clean, structured Markdown files. This toolkit works in five stages:
+A collection of tools to convert PDF documents into clean, structured Markdown files. This toolkit works in three stages:
 1.  **PDF to Images**: Converts each page of a PDF into high-quality images.
-2.  **Images to Markdown (OCR)**: Extracts text from images using Google Cloud Vision OCR.
-3.  **Markdown Cleaning (AI)**: Fixes OCR errors and prettifies the layout using AI (Gemini).
-4.  **English Translation (AI)**: Translates the cleaned markdown pages while preserving structure.
-5.  **Markdown Merging**: Combines multiple markdown pages into a single document.
+2.  **Image to Clean MD (EN)**: Fixes OCR errors and translates Khmer to English markdown using AI (Gemini).
+3.  **Markdown Merging**: Combines multiple markdown pages into a single document.
 
 ---
 
@@ -39,68 +37,29 @@ stack run -- <INPUT_PDF> [OPTIONS]
 
 | Option | Shorthand | Description | Default |
 | :--- | :--- | :--- | :--- |
-| `--output-dir DIR` | `-o` | Directory to save output images | `.` |
-| `--prefix PREFIX` | `-p` | Prefix for output filenames | `page` |
-| `--format FORMAT` | `-f` | Output format: `png`, `jpeg`, `tiff` | `png` |
+| \`--output-dir DIR\` | \`-o\` | Directory to save output images | \`.\` |
+| \`--prefix PREFIX\` | \`-p\` | Prefix for output filenames | \`page\` |
+| \`--format FORMAT\` | \`-f\` | Output format: \`png\`, \`jpeg\`, \`tiff\` | \`png\` |
 
 ---
 
-### 2. `2-images-to-md`
-Extracts text from images in a directory using the **Google Cloud Vision API**.
-
-#### Prerequisites
-- **Haskell Stack**
-- **Google Cloud Project** with Cloud Vision API enabled.
-- **Service Account JSON Key**.
-
-#### Installation
-```bash
-cd 2-images-to-md
-stack build
-```
-
-#### Usage
-```bash
-stack run -- --input-dir <DIR> --output-dir <DIR> --credentials <FILE>
-```
-
-| Option | Shorthand | Description |
-| :--- | :--- | :--- |
-| `--input-dir DIR` | `-i` | Directory containing images |
-| `--output-dir DIR` | `-o` | Directory to save extracted text |
-| `--credentials FILE`| `-c` | Path to Google Cloud Service Account key |
-| `--limit INT` | `-n` | (Optional) Limit number of files to process |
-
----
-
-### 3. `3-clean-markdown`
-Fixes OCR errors, corrects script-specific issues (e.g., Khmer combining characters), and prettifies the markdown layout using AI.
+### 2. \`2-img-to-clean-md-en\`
+Fixes OCR errors and translates Khmer markdown files into English markdown using AI, preserving the original structure.
 
 #### Prerequisites
 - **AI Access** (e.g., Gemini API or an AI coding assistant).
 
 #### Usage
-Follow the instructions and use the prompt stored in [3-clean-markdown/gemini.prompt.md](./3-clean-markdown/gemini.prompt.md).
+Follow the instructions and use the prompt stored in [2-img-to-clean-md-en/gemini.prompt.md](./2-img-to-clean-md-en/gemini.prompt.md).
 
 ---
 
-### 4. `4-md-kh-to-en`
-Translates Khmer markdown files into English markdown using AI, preserving the original structure and providing bracketed Khmer source text for technical terms. This step processes all markdown files in a directory.
-
-#### Prerequisites
-- **AI Access** (e.g., Gemini API or an AI coding assistant).
-
-#### Usage
-Follow the instructions and use the prompt stored in [4-md-kh-to-en/gemini.prompt.md](./4-md-kh-to-en/gemini.prompt.md).
-
----
-
-### 5. `5-combine-markdown`
-Combines multiple markdown files from a directory into a single document, ensuring they are sorted correctly (e.g., `page-001.md`, `page-002.md`).
+### 3. \`3-combine-markdown\`
+Combines multiple markdown files from a directory into a single document, ensuring they are sorted correctly (e.g., \`page-001.md\`, \`page-002.md\`).
 
 #### Installation
 ```bash
-cd 5-combine-markdown
+cd 3-combine-markdown
 stack build
 ```
 
@@ -109,7 +68,7 @@ stack build
 stack run -- -i <INPUT_DIR> -o <OUTPUT_DIR> [-n <FILE_NAME>]
 ```
 
-The output will be saved as `<OUTPUT_DIR>/<FILE_NAME or INPUT_DIR_NAME>.md`.
+The output will be saved as \`<OUTPUT_DIR>/<FILE_NAME or INPUT_DIR_NAME>.md\`.
 
 ---
 
@@ -118,60 +77,39 @@ The output will be saved as `<OUTPUT_DIR>/<FILE_NAME or INPUT_DIR_NAME>.md`.
 To convert a full PDF (e.g., Khmer legal text) to clean, translated markdown, follow this recommended workflow:
 
 1.  **Prepare the project structure:**
-    Create a new directory in `temp/` named after your PDF and set up the necessary output folders to keep each stage separate:
-    ```bash
+    Create a new directory in \`temp/\` named after your PDF and set up the necessary output folders to keep each stage separate:
+    \`\`\`bash
     # Replace 'my-pdf-name' with your actual PDF name
     mkdir -p temp/my-pdf-name/1-output-images
-    mkdir -p temp/my-pdf-name/2-output-markdown
-    mkdir -p temp/my-pdf-name/3-clean-markdown
-    mkdir -p temp/my-pdf-name/4-en-markdown
-    mkdir -p temp/my-pdf-name/5-combine-markdown
-    ```
+    mkdir -p temp/my-pdf-name/2-clean-en-markdown
+    mkdir -p temp/my-pdf-name/3-combine-markdown
+    \`\`\`
     Copy your PDF file into the created directory:
-    ```bash
+    \`\`\`bash
     cp path/to/your/document.pdf temp/my-pdf-name/
-    ```
+    \`\`\`
 
 2.  **Stage 1: Generate Images from PDF:**
-    ```bash
+    \`\`\`bash
     cd 1-pdf-to-images
     stack run -- ../temp/my-pdf-name/document.pdf \
       -o ../temp/my-pdf-name/1-output-images \
       -p page -f png
-    ```
+    \`\`\`
 
-3.  **Stage 2: Perform OCR:**
-    ```bash
-    cd ../2-images-to-md
+3.  **Stage 2: Clean and Translate (AI):**
+    Use an AI model (like Gemini) with the instructions in \`2-img-to-clean-md-en/gemini.prompt.md\` to process the images from \`temp/my-pdf-name/1-output-images/\` into \`temp/my-pdf-name/2-clean-en-markdown/\`.
+
+4.  **Stage 3: Merge into Final Document:**
+    Merge the translated English files:
+    \`\`\`bash
+    cd ../3-combine-markdown
     stack run -- \
-      -i ../temp/my-pdf-name/1-output-images \
-      -o ../temp/my-pdf-name/2-output-markdown \
-      -c /path/to/your/google-ocr-credentials.json
-    ```
-
-4.  **Stage 3: Clean and Prettify (AI):**
-    Use an AI model with the instructions in `3-clean-markdown/gemini.prompt.md` to process the raw OCR files from `temp/my-pdf-name/2-output-markdown/` into `temp/my-pdf-name/3-clean-markdown/`.
-
-5.  **Stage 4: Translate to English (AI):**
-    Use an AI model with the prompt in `4-md-kh-to-en/gemini.prompt.md` to translate the cleaned files from `temp/my-pdf-name/3-clean-markdown/` into `temp/my-pdf-name/4-en-markdown/`.
-
-6.  **Stage 5: Merge into Final Documents:**
-    Merge both the original Khmer and the translated English files:
-    ```bash
-    cd ../5-combine-markdown
-    # Combine original Khmer
-    stack run -- \
-      -i ../temp/my-pdf-name/3-clean-markdown \
-      -o ../temp/my-pdf-name/5-combine-markdown \
-      -n my-pdf-name
-
-    # Combine translated English
-    stack run -- \
-      -i ../temp/my-pdf-name/4-en-markdown \
-      -o ../temp/my-pdf-name/5-combine-markdown \
+      -i ../temp/my-pdf-name/2-clean-en-markdown \
+      -o ../temp/my-pdf-name/3-combine-markdown \
       -n my-pdf-name-en
-    ```
-    *This will create `temp/my-pdf-name/5-combine-markdown/my-pdf-name.md` and `temp/my-pdf-name/5-combine-markdown/my-pdf-name-en.md`.*
+    \`\`\`
+    *This will create \`temp/my-pdf-name/3-combine-markdown/my-pdf-name-en.md\`.*
 
 ---
 
