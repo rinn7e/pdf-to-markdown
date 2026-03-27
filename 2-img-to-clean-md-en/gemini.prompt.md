@@ -24,6 +24,8 @@ Also prettify that markdown file and provide an English translation.
     - Between an introductory sentence and the start of a list. **Never** put the first list item on the same line as the introductory text.
     - Between individual list items (e.g., between point ១-, ២-, etc.).
     - Between distinct paragraphs within a single article/section.
+- **No code block**: original text doesn't have code in them so don't use (```) or (`)
+
 - **Translation**: The English version must maintain the exact same markdown structure, spacing, and headings as the original.
 
 **Process**
