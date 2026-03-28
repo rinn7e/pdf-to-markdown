@@ -16,4 +16,4 @@ english translation dir
 examples/2-law-on-supreme-council-of-magistracy-ច្បាប់ស្តីពីឧត្តមក្រុមប្រឹក្សានៃអង្គចៅក្រម-2014/2.1-en-markdown
 
 start from page 1
-stop at page 100
+stop at page 100 or last page
