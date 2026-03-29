@@ -17,3 +17,5 @@ examples/2-law-on-organization-of-courts-ច្បាប់ស្តីពីក
 
 start from page 1
 stop at page 100 or last page
+
+if you encounter english text/version in the images, stop right there
