@@ -1,7 +1,9 @@
 #!/bin/bash
+
+mkdir 3-combine-markdown/2-law-on-organization-of-courts-ច្បាប់ស្តីពីការរៀបចំអង្គការតុលាការ-2014
+
 cd ../../3-combine-markdown
 
-mkdir 2-law-on-organization-of-courts-ច្បាប់ស្តីពីការរៀបចំអង្គការតុលាការ-2014
 
 # Combine Khmer
 stack run -- \
