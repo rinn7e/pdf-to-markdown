@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./next.sh "3-law-on-public-finance-system-ច្បាប់ស្តីពីប្រព័ន្ធហិរញ្ញវត្ថុសាធារណៈ-2023" --old "3-law-on-prisons-ច្បាប់ស្តីពន្ធនាគារ-2011" --sample "2-law-on-supreme-council-of-magistracy-ច្បាប់ស្តីពីឧត្តមក្រុមប្រឹក្សានៃអង្គចៅក្រម-2014"
