@@ -19,6 +19,6 @@ start from page 1
 
 stop condition:
 1. stop at page 100 or last page
-2. if you encounter english text/version in the images, stop right there
+2. if you encounter a page that only contains english words, stop right there
 
 you must not stop early no matter, unless the stop conditions are met
