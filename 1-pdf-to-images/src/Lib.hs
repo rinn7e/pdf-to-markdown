@@ -13,22 +13,23 @@ module Lib
   , PdfConverterOptions(..)
   ) where
 
-import Control.Monad (void)
+import Control.Monad (void, forM_)
 import Data.Text (Text)
 import qualified Data.Text as T
 import Effectful
 import Effectful.FileSystem
 import qualified System.Process.Typed as P
-import System.FilePath ((</>))
+import System.FilePath ((</>), takeBaseName, takeExtension)
 import qualified Text.Printf as Printf
 import Data.ByteString.Lazy (ByteString)
 import qualified Data.ByteString.Lazy.Char8 as BL
 import qualified Data.ByteString.Char8 as BS
-import Data.Char (isDigit)
+import Data.Char (isDigit, toLower)
 import System.IO (hFlush, stdout, hGetLine, Handle)
 import System.Exit (ExitCode(..))
 import Control.Monad (forever, when)
 import Control.Exception (try, SomeException)
+import Data.List (isSuffixOf)
 
 -- | Get the number of pages in the PDF using pdfinfo
 getPageCount :: (IOE :> es) => FilePath -> Eff es (Maybe Int)
@@ -86,7 +87,31 @@ data PdfConverterOptions = PdfConverterOptions
 run :: PdfConverterOptions -> IO ()
 run opts = runEff $ do
   -- We need FileSystem to create directories and IOE to run processes
-  runFileSystem $ convertPdf opts
+  runFileSystem $ do
+    let input = optInputPdf opts
+    isDir <- doesDirectoryExist input
+    if isDir 
+      then do
+        files <- listDirectory input
+        let pdfFiles = filter (\f -> ".pdf" `isSuffixOf` map toLower f) files
+        liftIO $ putStrLn $ "Processing directory: " ++ input
+        liftIO $ putStrLn $ "Found " ++ show (length pdfFiles) ++ " PDF files."
+        forM_ pdfFiles $ \pdfFile -> do
+          let pdfPath = input </> pdfFile
+              pdfBase = takeBaseName pdfFile
+              -- Determine the prefix to use for this file
+              origPrefix = case optOutputPrefix opts of
+                Just p  -> p
+                Nothing -> "page"
+              newPrefix = pdfBase ++ "-" ++ origPrefix
+              
+              fileOpts = opts 
+                { optInputPdf = pdfPath
+                , optOutputPrefix = Just newPrefix
+                }
+          liftIO $ putStrLn $ "\n>>> PDF: " ++ pdfFile
+          convertPdf fileOpts
+      else convertPdf opts
 
 -- | The core conversion logic using Effectful
 convertPdf 

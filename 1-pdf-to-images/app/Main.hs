@@ -7,21 +7,18 @@ import Options.Applicative
 
 -- | Parser for ImageFormat
 imageFormatParser :: Parser ImageFormat
-imageFormatParser = flag' Png (long "png" <> help "Output as PNG (default)")
-                <|> flag' Jpeg (long "jpeg" <> help "Output as JPEG")
-                <|> flag' Tiff (long "tiff" <> help "Output as TIFF")
-                <|> pure Png -- Default to Png if nothing specified, but we need to be careful with Alternative
-
--- This might handle defaults better:
-imageFormatOption :: Parser ImageFormat
-imageFormatOption = option (eitherReader parseFormat)
-  ( long "format"
- <> short 'f'
- <> metavar "FORMAT"
- <> help "Output format: png, jpeg, or tiff"
- <> value Png
- <> showDefault
-  )
+imageFormatParser = 
+      flag' Jpeg (long "jpeg" <> help "Output as JPEG")
+  <|> flag' Tiff (long "tiff" <> help "Output as TIFF")
+  <|> flag' Png  (long "png"  <> help "Output as PNG (default)")
+  <|> option (eitherReader parseFormat)
+      ( long "format"
+     <> short 'f'
+     <> metavar "FORMAT"
+     <> help "Output format: png, jpeg, or tiff"
+     <> value Png
+     <> showDefault
+      )
   where
     parseFormat "png"  = Right Png
     parseFormat "jpeg" = Right Jpeg
@@ -32,8 +29,8 @@ imageFormatOption = option (eitherReader parseFormat)
 optionsParser :: Parser PdfConverterOptions
 optionsParser = PdfConverterOptions
   <$> strArgument
-      ( metavar "INPUT_PDF"
-     <> help "Path to the input PDF file"
+      ( metavar "INPUT_PDF_OR_DIR"
+     <> help "Path to the input PDF file or directory containing PDF files"
       )
   <*> strOption
       ( long "output-dir"
@@ -47,14 +44,14 @@ optionsParser = PdfConverterOptions
       ( long "prefix"
      <> short 'p'
      <> metavar "PREFIX"
-     <> help "Prefix for the output image filenames"
+     <> help "Prefix for the output image filenames (default: page)"
       ))
-  <*> imageFormatOption
+  <*> imageFormatParser
   <*> optional (option auto
       ( long "limit"
      <> short 'l'
      <> metavar "N"
-     <> help "Limit the number of pages to process (starting from page 1)"
+     <> help "Limit the number of pages to process per PDF (starting from page 1)"
       ))
 
 -- | Run the CLI
@@ -65,6 +62,6 @@ main = do
   where
     optsWithHelp = info (optionsParser <**> helper)
       ( fullDesc
-     <> progDesc "Convert a PDF file into a list of images using pdftoppm"
-     <> header "pdf-to-images - A PDF to Image converter in Haskell"
+     <> progDesc "Convert one or more PDF files into images using pdftoppm"
+     <> header "pdf-to-images - A PDF-to-Image converter in Haskell"
       )
