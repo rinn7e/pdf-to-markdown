@@ -6,6 +6,14 @@
 
 use the dir name as --old, otherwise just set to empty string
 
+the target pdf can be found in 
+
+/home/rinne/projects/rinn7e-technology-project/cambodia-law-raw-pdf
+
+it should be the next pdf after the --old one
+
+if --old is empty string, ask user which pdf file to process
+
 ```
 #!/bin/bash
 
