@@ -41,5 +41,3 @@ if --old is empty string, ask user which pdf file to process
 - and update current name to the next pdf target
 in /home/rinne/projects/rinn7e-technology-project/cambodia-law-raw-pdf
 - sample remain the same
-
-- then run-next.sh (loop)
