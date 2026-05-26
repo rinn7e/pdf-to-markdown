@@ -31,6 +31,8 @@ if --old is empty string, ask user which pdf file to process
 
 /home/rinne/projects/rinn7e-technology-project/pdf-to-markdown/examples/<NAME>/2-img-to-clean-md-en.prompt.md
 
+(Always spin up parallel `self` subagents with `Workspace: inherit` to process the pages in parallel chunks—for example, pages 11-20, 21-30, 31-40, 41-49 concurrently—since this transcription and translation work is fully parallelable)
+
 - then run
 
 3-combine-md.sh
