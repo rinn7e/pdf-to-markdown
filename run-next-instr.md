@@ -1,6 +1,10 @@
 - run run-next.sh
 
-- set old to empty string if this is the first tiem
+- if there is a untrack directory in 
+
+/home/rinne/projects/rinn7e-technology-project/pdf-to-markdown/examples/**
+
+use the dir name as --old, otherwise just set to empty string
 
 ```
 #!/bin/bash

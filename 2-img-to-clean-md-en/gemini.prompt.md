@@ -32,3 +32,4 @@ Also prettify that markdown file and provide an English translation.
 - do not write a script, make the changes manually
 - process each page 1 by 1, not all at once
 - for how many pages until you stop, if I don't tell you, that means, only stop when you finished all the pages
+- do not search the web at all cost, all you do here is reading data from image and translation
