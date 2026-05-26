@@ -1,12 +1,14 @@
 - run run-next.sh
 
-- if there is a untrack directory in 
+- (note: don't try to chmod +x, every script is executabled already)
+
+- if there is a untrack directory in
 
 /home/rinne/projects/rinn7e-technology-project/pdf-to-markdown/examples/**
 
 use the dir name as --old, otherwise just set to empty string
 
-the target pdf can be found in 
+the target pdf can be found in
 
 /home/rinne/projects/rinn7e-technology-project/cambodia-law-raw-pdf
 
