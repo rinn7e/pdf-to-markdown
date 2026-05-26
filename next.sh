@@ -32,7 +32,7 @@ while [[ "$#" -gt 0 ]]; do
     esac
 done
 
-if [[ -z "$NAME" || -z "$OLD_NAME" || -z "$SAMPLE_NAME" ]]; then
+if [[ -z "$NAME" || -z "$SAMPLE_NAME" ]]; then
     echo "Error: Missing required arguments."
     echo "Usage: ./next <name> --old <old-name> --sample <sample-name>"
     exit 1
@@ -44,12 +44,16 @@ echo "Old Name: $OLD_NAME"
 echo "Sample:   $SAMPLE_NAME"
 
 # 1. Move examples/<old-name> dir, to temp/<old-name>
-if [ -d "examples/$OLD_NAME" ]; then
-    mkdir -p temp
-    echo "Moving examples/$OLD_NAME to temp/$OLD_NAME..."
-    mv "examples/$OLD_NAME" temp/
+if [ -n "$OLD_NAME" ]; then
+    if [ -d "examples/$OLD_NAME" ]; then
+        mkdir -p temp
+        echo "Moving examples/$OLD_NAME to temp/$OLD_NAME..."
+        mv "examples/$OLD_NAME" temp/
+    else
+        echo "Warning: examples/$OLD_NAME not found, skipping move."
+    fi
 else
-    echo "Warning: examples/$OLD_NAME not found, skipping move."
+    echo "Skipping cleanup step as --old is empty."
 fi
 
 # 2. Setup examples/<name> directory
@@ -66,8 +70,8 @@ else
     exit 1
 fi
 
-# 4. Copy /home/rinne/projects/my-package/cambodia-law-raw-pdf/<name>.pdf to examples/<name>
-PDF_SOURCE="/home/rinne/projects/my-package/cambodia-law-raw-pdf/$NAME.pdf"
+# 4. Copy /home/rinne/projects/rinn7e-technology-project/cambodia-law-raw-pdf/<name>.pdf to examples/<name>
+PDF_SOURCE="/home/rinne/projects/rinn7e-technology-project/cambodia-law-raw-pdf/$NAME.pdf"
 if [ -f "$PDF_SOURCE" ]; then
     echo "Copying PDF: $PDF_SOURCE..."
     cp "$PDF_SOURCE" "examples/$NAME/"

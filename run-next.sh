@@ -1,6 +1,6 @@
 #!/bin/bash
 
 ./next.sh \
-  "3-law-on-taxation-ច្បាប់ស្តីពីសារពើពន្ធ-2023" \
-  --old "3-law-on-public-finance-system-ច្បាប់ស្តីពីប្រព័ន្ធហិរញ្ញវត្ថុសាធារណៈ-2023" \
+  "5-law-on-food-safety-ច្បាប់ស្តីពីសុវត្ថិភាពម្ហូបអាហារ" \
+  --old "" \
   --sample "2-law-on-supreme-council-of-magistracy-ច្បាប់ស្តីពីឧត្តមក្រុមប្រឹក្សានៃអង្គចៅក្រម-2014"
