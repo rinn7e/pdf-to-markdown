@@ -5,7 +5,7 @@ To orchestrate the entire digitization workflow using the central toolkit inside
 
 ### 2. Checklist Before Starting
 * [ ] Toolkit scripts inside `tools/` (`get-next-pdf.sh`, `init-workspace.sh`, `pdf-to-images.sh`, `combine-md.sh`).
-* [ ] Digitization prompt instruction file `tools/digitize.prompt.md`.
+* [ ] Digitization prompt instruction file `tools/digitize.procedure.md`.
 * [ ] Target PDF documents to be processed in the workspace.
 
 ### 3. Step-by-Step Instructions
@@ -40,7 +40,7 @@ To orchestrate the entire digitization workflow using the central toolkit inside
   * For each subagent in the current batch:
     * Spawn parallel `self` subagents with `Workspace: inherit`.
     * Provide the target range of pages (padded correctly matching the image filenames).
-    * Instruct the subagent to run `tools/digitize.prompt.md` for each page in its range.
+    * Instruct the subagent to run `tools/digitize.procedure.md` for each page in its range.
     * Instruct the subagent that they must NEVER request permission to access other directories. All the subagent does is read from the assigned source image and write the translation and original language markdown files. It has absolutely no need to access any other directory or run external commands.
   * Monitor the subagents:
     * Wait for all subagents in the current batch to finish.
@@ -60,6 +60,6 @@ To orchestrate the entire digitization workflow using the central toolkit inside
 ### 4. How to Invoke this Procedure
 To run this procedure, instruct the assistant with the following request:
 * **To process the next PDF automatically:**
-  > "Please follow the coordination procedure in `coordinator.prompt.md` and start processing the next PDF target."
+  > "Please follow the coordination procedure in `coordinator.procedure.md` and start processing the next PDF target."
 * **To process a specific PDF document:**
-  > "Please follow the coordination procedure in `coordinator.prompt.md` and process `your-document-name.pdf`."
+  > "Please follow the coordination procedure in `coordinator.procedure.md` and process `your-document-name.pdf`."

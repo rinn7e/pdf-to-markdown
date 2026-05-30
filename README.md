@@ -73,37 +73,6 @@ The output document will be saved as `<OUTPUT_DIR>/<FILE_NAME or INPUT_DIR_NAME>
 
 ---
 
-## Automated Workflow with AI Agent
-
-For developers using an agentic AI assistant, the entire digitization cycle can be fully automated using the coordinator prompt.
-
-The coordinator dynamically resolves the next target PDF alphabetically, sets up the workspace, extracts images, coordinates parallel subagents for page digitization, combines the final markdown files, and manages the lifecycle directories.
-
-### Setup & Directory Layout
-All active workspaces are stored under the `temp/` folder:
-- `temp/progress/`: Contains the workspace of the law currently being digitized.
-- `temp/done/`: Contains the workspaces of completed laws (acts as a step memory for successor resolution).
-
-### Reusable Tools
-The coordinator orchestrates the workflow using these generic scripts in the `tools/` directory:
-- [tools/get-next-pdf.sh](./tools/get-next-pdf.sh): Auto-detects the successor PDF target using `temp/done/` as memory.
-- [tools/init-workspace.sh](./tools/init-workspace.sh): Creates folders in `temp/progress/` and copies the source PDF.
-- [tools/pdf-to-images.sh](./tools/pdf-to-images.sh): Converts PDF to page images.
-- [tools/digitize.prompt.md](./tools/digitize.prompt.md): The page OCR and English translation instructions template.
-- [tools/combine-md.sh](./tools/combine-md.sh): Merges individual pages into final unified markdown documents.
-
-### How to Use the Coordinator
-
-1. Instruct your agentic AI assistant to read [coordinator.prompt.md](./coordinator.prompt.md).
-2. The AI assistant will automatically:
-   - Identify the next PDF target alphabetically.
-   - Run the setup and image extraction scripts.
-   - Spawn parallel subagents to process the page chunks.
-   - Merge the finished outputs.
-   - Move the workspace directory to `temp/done/` when completed.
-
----
-
 ## Workflow Example (Manual)
 
 To convert a standard PDF (such as Khmer legal text) to clean, translated markdown, follow this recommended procedure:
@@ -152,8 +121,41 @@ cp path/to/your/document.pdf temp/my-pdf-name/
 
 ---
 
+
 ## Examples
 The [examples/](./examples) directory contains sample legal documents processed with this toolkit, including automation scripts.
+
+---
+
+## Automated Workflow with AI Agent
+
+For developers using an agentic AI assistant, the entire digitization cycle can be fully automated using the coordinator prompt.
+
+The coordinator dynamically resolves the next target PDF alphabetically, sets up the workspace, extracts images, coordinates parallel subagents for page digitization, combines the final markdown files, and manages the lifecycle directories.
+
+### Setup & Directory Layout
+All active workspaces are stored under the `temp/` folder:
+- `temp/progress/`: Contains the workspace of the law currently being digitized.
+- `temp/done/`: Contains the workspaces of completed laws (acts as a step memory for successor resolution).
+
+### Reusable Tools
+The coordinator orchestrates the workflow using these generic scripts in the `tools/` directory:
+- [tools/get-next-pdf.sh](./tools/get-next-pdf.sh): Auto-detects the successor PDF target using `temp/done/` as memory.
+- [tools/init-workspace.sh](./tools/init-workspace.sh): Creates folders in `temp/progress/` and copies the source PDF.
+- [tools/pdf-to-images.sh](./tools/pdf-to-images.sh): Converts PDF to page images.
+- [tools/digitize.procedure.md](./tools/digitize.procedure.md): The page OCR and English translation instructions template.
+- [tools/combine-md.sh](./tools/combine-md.sh): Merges individual pages into final unified markdown documents.
+
+### How to Use the Coordinator
+
+1. Instruct your agentic AI assistant to read [coordinator.procedure.md](./coordinator.procedure.md).
+2. The AI assistant will automatically:
+   - Identify the next PDF target alphabetically.
+   - Run the setup and image extraction scripts.
+   - Spawn parallel subagents to process the page chunks.
+   - Merge the finished outputs.
+   - Move the workspace directory to `temp/done/` when completed.
+
 
 ---
 

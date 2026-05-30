@@ -44,4 +44,4 @@ To extract text from a document page image into a prettified Markdown file (Orig
 ### 4. How to Invoke this Procedure
 To run this procedure, instruct the assistant with the following request:
 * **To process a page image:**
-  > "Please follow the procedure in `tools/digitize.prompt.md` to process page `{{PAGE_NUMBER}}` for `{{LAW_NAME}}`."
+  > "Please follow the procedure in `tools/digitize.procedure.md` to process page `{{PAGE_NUMBER}}` for `{{LAW_NAME}}`."

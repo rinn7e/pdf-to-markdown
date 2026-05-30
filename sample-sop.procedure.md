@@ -27,4 +27,4 @@ To verify and process customer refund requests within the 30-day policy.
 ### 4. How to Invoke this Procedure
 To run this procedure, instruct the assistant with the following request:
 * **To process customer refunds:**
-  > "Please follow the procedure in `sample-sop.md` to process the refund request for order `{{ORDER_NUMBER}}`."
+  > "Please follow the procedure in `sample-sop.procedure.md` to process the refund request for order `{{ORDER_NUMBER}}`."
