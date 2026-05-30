@@ -1,21 +1,21 @@
 #!/bin/bash
 
-# Usage: ./tools/init-workspace.sh <LAW_NAME>
+# Usage: ./tools/init-workspace.sh <PDF_NAME>
 if [[ $# -lt 1 ]]; then
-    echo "Error: Missing law name."
-    echo "Usage: ./tools/init-workspace.sh <LAW_NAME>"
+    echo "Error: Missing PDF name."
+    echo "Usage: ./tools/init-workspace.sh <PDF_NAME>"
     exit 1
 fi
 
-LAW_NAME=$1
-PDF_SOURCE="/home/rinne/projects/rinn7e-technology-project/cambodia-law-raw-pdf/$LAW_NAME.pdf"
+PDF_NAME=$1
+PDF_SOURCE="/home/rinne/projects/rinn7e-technology-project/cambodia-law-raw-pdf/$PDF_NAME.pdf"
 
 if [[ ! -f "$PDF_SOURCE" ]]; then
     echo "Error: PDF source not found at $PDF_SOURCE"
     exit 1
 fi
 
-WORKSPACE_DIR="temp/progress/$LAW_NAME"
+WORKSPACE_DIR="temp/progress/$PDF_NAME"
 
 echo "Creating workspace at $WORKSPACE_DIR..."
 mkdir -p "$WORKSPACE_DIR/1-output-images"

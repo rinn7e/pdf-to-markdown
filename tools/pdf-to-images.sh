@@ -1,21 +1,21 @@
 #!/bin/bash
 
-# Usage: ./tools/pdf-to-images.sh <LAW_NAME>
+# Usage: ./tools/pdf-to-images.sh <PDF_NAME>
 if [[ $# -lt 1 ]]; then
-    echo "Error: Missing law name."
-    echo "Usage: ./tools/pdf-to-images.sh <LAW_NAME>"
+    echo "Error: Missing PDF name."
+    echo "Usage: ./tools/pdf-to-images.sh <PDF_NAME>"
     exit 1
 fi
 
-LAW_NAME=$1
-WORKSPACE_DIR="temp/progress/$LAW_NAME"
+PDF_NAME=$1
+WORKSPACE_DIR="temp/progress/$PDF_NAME"
 
 if [[ ! -d "$WORKSPACE_DIR" ]]; then
     echo "Error: Workspace directory $WORKSPACE_DIR not found."
     exit 1
 fi
 
-PDF_PATH="../$WORKSPACE_DIR/$LAW_NAME.pdf"
+PDF_PATH="../$WORKSPACE_DIR/$PDF_NAME.pdf"
 OUTPUT_DIR="../$WORKSPACE_DIR/1-output-images"
 
 echo "Running pdf-to-images extraction..."

@@ -4,9 +4,9 @@
 To extract text from a document page image into a prettified Markdown file (Original Language) and, unless translation is disabled or unnecessary, provide a matching English translation Markdown file.
 
 ### 2. Checklist Before Starting
-* [ ] Source Image: `/home/rinne/projects/rinn7e-technology-project/pdf-to-markdown/temp/progress/{{LAW_NAME}}/1-output-images/page-{{PAGE_NUMBER}}.png`
-* [ ] Target 1 (Original Language) Path: `/home/rinne/projects/rinn7e-technology-project/pdf-to-markdown/temp/progress/{{LAW_NAME}}/2-clean-markdown/page-{{PAGE_NUMBER}}.md`
-* [ ] (Optional) Target 2 (English Translation) Path: `/home/rinne/projects/rinn7e-technology-project/pdf-to-markdown/temp/progress/{{LAW_NAME}}/2.1-en-markdown/page-{{PAGE_NUMBER}}-en.md` (Ignore/leave empty if "no English translation" is specified or if the original document is in English)
+* [ ] Source Image: `/home/rinne/projects/rinn7e-technology-project/pdf-to-markdown/temp/progress/{{PDF_NAME}}/1-output-images/page-{{PAGE_NUMBER}}.png`
+* [ ] Target 1 (Original Language) Path: `/home/rinne/projects/rinn7e-technology-project/pdf-to-markdown/temp/progress/{{PDF_NAME}}/2-clean-markdown/page-{{PAGE_NUMBER}}.md`
+* [ ] (Optional) Target 2 (English Translation) Path: `/home/rinne/projects/rinn7e-technology-project/pdf-to-markdown/temp/progress/{{PDF_NAME}}/2.1-en-markdown/page-{{PAGE_NUMBER}}-en.md` (Ignore/leave empty if "no English translation" is specified or if the original document is in English)
 
 ### 3. Step-by-Step Instructions
 
@@ -44,4 +44,4 @@ To extract text from a document page image into a prettified Markdown file (Orig
 ### 4. How to Invoke this Procedure
 To run this procedure, instruct the assistant with the following request:
 * **To process a page image:**
-  > "Please follow the procedure in `tools/digitize.procedure.md` to process page `{{PAGE_NUMBER}}` for `{{LAW_NAME}}`."
+  > "Please follow the procedure in `tools/digitize.procedure.md` to process page `{{PAGE_NUMBER}}` for `{{PDF_NAME}}`."

@@ -11,22 +11,22 @@ To orchestrate the entire digitization workflow using the central toolkit inside
 ### 3. Step-by-Step Instructions
 
 * **Step 1: Target Identification**
-  * If the user explicitly specifies which PDF to process, use that name as `$LAW_NAME` (excluding the `.pdf` extension).
-  * If the user does not specify a PDF, run `./tools/get-next-pdf.sh` to automatically identify the successor `$LAW_NAME`:
+  * If the user explicitly specifies which PDF to process, use that name as `$PDF_NAME` (excluding the `.pdf` extension).
+  * If the user does not specify a PDF, run `./tools/get-next-pdf.sh` to automatically identify the successor `$PDF_NAME`:
     ```bash
-    LAW_NAME=$(./tools/get-next-pdf.sh)
-    echo "Detected LAW_NAME: $LAW_NAME"
+    PDF_NAME=$(./tools/get-next-pdf.sh)
+    echo "Detected PDF_NAME: $PDF_NAME"
     ```
   * If `temp/done/` is empty and no automatic successor can be resolved, ask the user which PDF to process.
 
 * **Step 2: Initialize Workspace**
-  * Run `./tools/init-workspace.sh "$LAW_NAME"`.
-  * Confirm the workspace directory `temp/progress/$LAW_NAME/` is created successfully.
+  * Run `./tools/init-workspace.sh "$PDF_NAME"`.
+  * Confirm the workspace directory `temp/progress/$PDF_NAME/` is created successfully.
 
 * **Step 3: Extract PDF to Images**
-  * Run `./tools/pdf-to-images.sh "$LAW_NAME"`.
+  * Run `./tools/pdf-to-images.sh "$PDF_NAME"`.
   * Read the console output to find the total page count $N$.
-  * Verify that the files `page-01.png` (or `page-001.png` if three digits) to the last page are generated in `temp/progress/$LAW_NAME/1-output-images/`.
+  * Verify that the files `page-01.png` (or `page-001.png` if three digits) to the last page are generated in `temp/progress/$PDF_NAME/1-output-images/`.
   * Note the padding format (e.g. 2-digit padding `page-01.png` or 3-digit padding `page-001.png`).
 
 * **Step 4: Parallel Page Digitization**
@@ -49,11 +49,11 @@ To orchestrate the entire digitization workflow using the central toolkit inside
   * If the current batch completes successfully and there are still pages left to process, repeat Step 4 for the remaining pages. Keep doing this batch-by-batch until all pages are done.
 
 * **Step 5: Merge Combined Markdown Files**
-  * Run `./tools/combine-md.sh "$LAW_NAME"`.
-  * Verify that the combined original and English translation markdown files are successfully created in `temp/progress/$LAW_NAME/3-combine-markdown/$LAW_NAME/`.
+  * Run `./tools/combine-md.sh "$PDF_NAME"`.
+  * Verify that the combined original and English translation markdown files are successfully created in `temp/progress/$PDF_NAME/3-combine-markdown/$PDF_NAME/`.
 
 * **Step 6: Complete and Move Workspace**
-  * Move the completed workspace directory from `temp/progress/$LAW_NAME` to `temp/done/$LAW_NAME`.
+  * Move the completed workspace directory from `temp/progress/$PDF_NAME` to `temp/done/$PDF_NAME`.
   * Verify the move is successful.
   * Report the completion and final links to the user.
 
