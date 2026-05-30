@@ -86,7 +86,7 @@ All active workspaces are stored under the `temp/` folder:
 
 ### Reusable Tools
 The coordinator orchestrates the workflow using these generic scripts in the `tools/` directory:
-- [tools/get-next-law.sh](./tools/get-next-law.sh): Auto-detects the successor PDF target using `temp/done/` as memory.
+- [tools/get-next-pdf.sh](./tools/get-next-pdf.sh): Auto-detects the successor PDF target using `temp/done/` as memory.
 - [tools/init-workspace.sh](./tools/init-workspace.sh): Creates folders in `temp/progress/` and copies the source PDF.
 - [tools/pdf-to-images.sh](./tools/pdf-to-images.sh): Converts PDF to page images.
 - [tools/digitize.prompt.md](./tools/digitize.prompt.md): The page OCR and English translation instructions template.
