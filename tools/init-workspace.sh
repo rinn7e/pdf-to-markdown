@@ -7,8 +7,17 @@ if [[ $# -lt 1 ]]; then
     exit 1
 fi
 
-PDF_NAME=$1
-PDF_SOURCE="/home/rinne/projects/rinn7e-technology-project/cambodia-law-raw-pdf/$PDF_NAME.pdf"
+ARG=$1
+if [[ -f "$ARG" ]]; then
+    PDF_SOURCE="$ARG"
+    PDF_NAME=$(basename "$ARG" .pdf)
+elif [[ -n "$2" && -f "$2" ]]; then
+    PDF_NAME="$1"
+    PDF_SOURCE="$2"
+else
+    PDF_NAME="$1"
+    PDF_SOURCE="/Users/rinn7e/projects/serokell/chatfusion/chatfusion-dev/docs/$PDF_NAME.pdf"
+fi
 
 if [[ ! -f "$PDF_SOURCE" ]]; then
     echo "Error: PDF source not found at $PDF_SOURCE"
