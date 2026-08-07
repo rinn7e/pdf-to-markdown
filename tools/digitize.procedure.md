@@ -31,8 +31,8 @@ To extract text from a document page image into a prettified Markdown file (Orig
     * **No code block**: Original text doesn't have code, so do not use markdown code blocks (```) or inline code (`).
   * Write the parsed/cleaned markdown to Target 1.
 
-* **Step 3: Translate to English (Skip if "no English translation" is specified, Target 2 is empty, or the original document is in English)**
-  * *If translation is disabled, Target 2 is empty, or the original document is already in English, skip this step.*
+* **Step 3: Translate to English (Skip if "no English translation" is specified, Target 2 is empty, the original document is in English, or processing Khmer version without translation request)**
+  * *If translation is disabled, Target 2 is empty, the original document is already in English, or translation is not needed, skip this step.*
   * Translate the extracted text into English.
   * The English version must maintain the exact same markdown structure, spacing, and headings as the original version.
   * Write the English translation markdown to Target 2.
